@@ -1,5 +1,7 @@
 {
   "name": "recepies",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

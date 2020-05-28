@@ -1,17 +1,27 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+const newLocal = './recepies/recipe-detail/recipe-detail.module#RecipeDetailPageModule';
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'recepies',
     pathMatch: 'full'
   },
-];
+  {
+    path: 'recepies',
+    children: [
+      {
+      path: '',
+      loadChildren: './recepies/recepies.module#RecepiesPageModule'
+      },
+      {
+        path: ':recepieId',
+        loadChildren: './recepies/recipe-detail/recipe-detail.module#RecipeDetailPageModule'
+      }
+    ]
+  },
+  ];
 
 @NgModule({
   imports: [
